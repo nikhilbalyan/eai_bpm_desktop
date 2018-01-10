@@ -1,0 +1,64 @@
+#%RAML 1.0
+version: v1
+baseUri: https://mocksvc.mulesoft.com/mocks/429a8d57-18c6-40be-a4cf-a5ee6c11a5f9 # 
+title: ap-dev
+
+/ap-dev:
+ get:
+  responses: 
+    200:
+     body: 
+       application/json:
+         example:
+          [{
+            "ID": 1,
+            "code": "ER38sd",
+            "price": 400,
+            "departureDate": "2016/03/20",
+            "origin": "MUA",
+            "destination": "SFO",
+            "emptySeats": 0,
+            "plane": {
+              "type": "Boeing 737",
+              "totalSeats": 150
+            }
+          }]
+ post:
+    responses: 
+      200:
+       body:
+        application/json:
+          example:
+           [{
+            "ID": 1,
+            "code": "ER38sd",
+            "price": 400,
+            "departureDate": "2016/03/20",
+            "origin": "MUA",
+            "destination": "SFO",
+            "emptySeats": 0,
+            "plane": {
+              "type": "Boeing 737",
+              "totalSeats": 150
+            }
+          }]
+ /{ID}:
+   get:
+     responses: 
+       200:
+        body:
+         application/json:
+           example: | 
+            [{
+            "ID": 1,
+            "code": "ER38sd",
+            "price": 400,
+            "departureDate": "2016/03/20",
+            "origin": "MUA",
+            "destination": "SFO",
+            "emptySeats": 0,
+            "plane": {
+              "type": "Boeing 737",
+              "totalSeats": 150
+            }
+            }]

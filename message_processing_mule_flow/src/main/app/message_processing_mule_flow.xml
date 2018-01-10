@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <flow name="message_processing_mule_flowFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP" allowedMethods="GET"/>
+        <expression-filter expression="#[message.payload != 'favicon.ico']" doc:name="Expression"/>
+        <set-variable doc:name="Set Language Variable" value="#[message.inboundProperties.'http.query.params'.language]" variableName="language"/>
+        <choice doc:name="Choice">
+            <when expression="#[flowVars.language == 'Portuguese']">
+                <set-payload value="Hello in portuguese" doc:name="Reply in portuguese"/>
+            </when>
+            <when expression="#[flowVars.language == 'French']">
+                <set-payload value="Hello in French" doc:name="Reply in French"/>
+            </when>
+            <otherwise>
+                <set-payload value="hola" doc:name="default reply"/>
+            </otherwise>
+        </choice>
+        <logger level="INFO" doc:name="Logger" message="The reply &quot;#[message.payload]&quot; means &quot;Hello! How are you?&quot; in #[flowVars.language]"/>
+    </flow>
+</mule>

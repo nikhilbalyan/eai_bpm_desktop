@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <flow name="apdev-american-4thweekFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/api/*" allowedMethods="GET" doc:name="HTTP"/>
+        <set-variable variableName="qptype" value="#[message.inboundProperties.'http.query.params'.qptype]" doc:name="Variable"/>
+        <set-payload value="#[message.inboundProperties.'http.query.params']" doc:name="Set Payload"/>
+        <set-property propertyName="qpname" value="#[message.inboundProperties.'http.request.uri']" doc:name="Property"/>
+        <set-session-variable variableName="color" value="gray" doc:name="Session Variable"/>
+        <logger message="#[message.inboundProperties.'http.query.params'.ID]  #[sessionVars.color]" level="INFO" doc:name="Logger"/>
+    </flow>
+    
+    <flow name="apdev-american-4thweekFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/subflow" doc:name="HTTP"/>
+        <flow-ref name="apdev-american-subflow1" doc:name="apdev-american-subflow1"/>
+        <flow-ref name="apdev-american-subflow2" doc:name="apdev-american-subflow2"/>
+        <logger message="here is mojo value ======== #[message.outboundProperties.mojo]" level="INFO" doc:name="Logger"/>
+        <variable-transformer doc:name="Variable"/>
+        <session-variable-transformer doc:name="Session Variable"/>
+    </flow>
+    <sub-flow name="apdev-american-subflow1">
+        <set-payload value="name = helloworld" doc:name="Set Payload"/>
+    </sub-flow>
+    <sub-flow name="apdev-american-subflow2">
+        <set-property propertyName="mojo" value="jomo" doc:name="Property"/>
+    </sub-flow>
+</mule>

@@ -1,0 +1,22 @@
+#%RAML 1.0
+version: v1
+baseUri: https://mocksvc.mulesoft.com/mocks/429a8d57-18c6-40be-a4cf-a5ee6c11a5f9 # 
+title: ap-dev
+
+/ap-dev:
+ get:
+  responses: 
+    200:
+     body: 
+       application/json:
+         example:
+          [{
+            "ID": 1,
+            "code": "abc",
+            "price": 1,
+            "departureDate": "12/2/233",
+            "origin": "delhi",
+            "destination": "bhubansaer",
+            "emptySeats":23
+          }]
+ 

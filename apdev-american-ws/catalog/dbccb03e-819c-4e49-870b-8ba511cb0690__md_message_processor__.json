@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "sampleraml"
+        }
+    },
+    "id": "dbccb03e-819c-4e49-870b-8ba511cb0690",
+    "version": "5.2.0.0"
+}

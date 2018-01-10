@@ -1,0 +1,6 @@
+package app.myweb;
+
+@WebService
+public interface IHelloWorldService {
+
+}

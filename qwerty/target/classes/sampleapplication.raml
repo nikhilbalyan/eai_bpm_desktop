@@ -1,0 +1,13 @@
+#%RAML 1.0
+baseUri: https://mocksvc.mulesoft.com/mocks/0c0d008e-3165-47d5-9745-4108cb5ee396 # 
+title: SampleApplication
+version: 1.0
+
+/book:
+  get:
+   responses:
+    200:
+     body:
+      application/json:
+       example:
+        [{"book": "james"}, {"book": "nona"}]

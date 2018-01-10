@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="8081" doc:name="HTTP Request Configuration"/>
+    <flow name="apdev-american-flows-subflowsFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/" allowedMethods="GET" doc:name="HTTP"/>
+        <flow-ref name="apdev-american-flows-subflowsSub_Flow" doc:name="apdev-american-flows-subflowsSub_Flow"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="flow2" method="GET" doc:name="HTTP"/>
+        <logger message="#[message.outboundProperties.aqdp]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <sub-flow name="apdev-american-flows-subflowsSub_Flow">
+        <set-property propertyName="aqdp" value="jojo" doc:name="Property"/>
+    </sub-flow>
+    <sub-flow name="flow2">
+        <http:request config-ref="HTTP_Request_Configuration" path="/ddi" method="GET" doc:name="HTTP"/>
+    </sub-flow>
+    <flow name="apdev-american-flows-subflowsFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/flow2" doc:name="HTTP"/>
+        <set-payload value="we won the match" doc:name="Set Payload"/>
+    </flow>
+</mule>
