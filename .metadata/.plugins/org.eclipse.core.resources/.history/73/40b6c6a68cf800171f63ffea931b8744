@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <http:request-config name="HTTP_Request_Configuration" protocol="HTTPS" host="mocksvc.mulesoft.com" port="443" basePath="/mocks/0c0d008e-3165-47d5-9745-4108cb5ee396" doc:name="HTTP Request Configuration">
+        <http:raml-api-configuration location="sampleapplication.raml"/>
+        <http:proxy host="172.17.2.218" port="8085" username="m1043098" password="123_sundar456"/>
+    </http:request-config>
+    <flow name="restful_raml_consumptionFlow">
+        <http:listener config-ref="sampleapplication-httpListenerConfig" path="/raml" allowedMethods="GET" doc:name="HTTP"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="" method="" doc:name="HTTP"/>
+    </flow>
+</mule>

@@ -1,0 +1,11 @@
+<html>
+
+<body>
+
+	<form action="/login" method="POST">
+
+		Username: <input type="text" name="username" id="username" />
+
+	</form>
+</body>
+</html>

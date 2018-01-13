@@ -10,6 +10,17 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
     <http:request-config doc:name="HTTP Request Configuration" host="0.0.0.0" name="HttpRequestConfig" port="${http.port}"/>
     <context:property-placeholder location="Flights-${env}.properties"/>
     <db:mysql-config name="MySQL_Configuration" host="localhost" port="3306" user="root" password="Welcome@123" database="mulesoft" doc:name="MySQL Configuration"/>
+    <flow name="Register">
+        <http:listener config-ref="HttpListenerConfig" path="/register" doc:name="HTTP" allowedMethods="GET"/>
+        <parse-template location="C:\Users\EAI\AnypointStudio\workspace\signupandsigninwebpage\src\main\resources\register.html" doc:name="Parse Template"/>
+    </flow>
+    <flow name="register_User">
+        <http:listener config-ref="HttpListenerConfig" path="/register" doc:name="HTTP" allowedMethods="POST"/>
+        <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[INSERT INTO userdetail(username, password, timeregistered) VALUES(#[payload.username], #[payload.password], CURRENT_TIMESTAMP);]]></db:parameterized-query>
+        </db:insert>
+        <parse-template location="C:\Users\EAI\AnypointStudio\workspace\signupandsigninwebpage\src\main\resources\registrationSuccessful.html" doc:name="Parse Template"/>
+    </flow>
     <!-- Flow that provides the login HTML page -->
     <flow name="GetLoginPageFlow">
     	<!-- Listen only GET requests in uri /login. Hit this endpoint to put your credentials (mule/mule are valid) -->
@@ -22,14 +33,12 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
     	<!-- Listen only POST requests on uri /login  -->
         <http:listener allowedMethods="POST" config-ref="HttpListenerConfig" doc:name="Do Login" path="/login"/>
         <!-- The payload (HTTP request body) is a Map with the form fields. Lets write the username in the log. -->
-        <logger doc:name="Log username" level="INFO" message="User #[payload.username:] is trying to login password = #[payload.password]  here is full payload #[payload]"/>
+        <logger doc:name="Log username" level="INFO" message="User #[payload.username] is trying to login password = #[payload.password]  here is full payload #[payload]"/>
         <db:select config-ref="MySQL_Configuration" doc:name="Database">
-            <db:parameterized-query><![CDATA[select * from userdetail where username=#[payload.username] AND password=#[payload.password];]]></db:parameterized-query>
+            <db:parameterized-query><![CDATA[SELECT * FROM userdetail where username = #[payload.username] AND password = #[payload.password];]]></db:parameterized-query>
         </db:select>
         <!-- If username does not exist then fail and handle through exception strategy -->
-        <message-filter doc:name="Validate username and password" throwOnUnaccepted="true">
-            <expression-filter expression="#[payload.username == 'mule' &amp;&amp; payload.password == 'mule']"/>
-        </message-filter>
+
         <!-- Convert the Map to a JSON format -->
         <parse-template doc:name="User logged in successfully page" location="C:\Users\EAI\AnypointStudio\workspace\signupandsigninwebpage\src\main\resources\loginSuccessful.html"/>
         <set-property doc:name="Set content-type" encoding="UTF-8" mimeType="text/html" propertyName="Content-Type" value="text/html; charset=UTF-8"/>

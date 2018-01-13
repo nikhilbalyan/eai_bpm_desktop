@@ -1,0 +1,908 @@
+2018-01-11 16:37:40,370 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'poll'                                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 16:37:40,546 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-01-11 16:37:40,644 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-01-11 16:37:40,745 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-01-11 16:37:40,746 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.8)
+2018-01-11 16:37:40,812 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@24a1c17f: startup date [Thu Jan 11 16:37:40 IST 2018]; root of context hierarchy
+2018-01-11 16:37:41,958 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-01-11 16:37:42,286 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 16:37:42,286 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 16:37:42,286 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 16:37:42,286 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 16:37:42,768 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-01-11 16:37:42,982 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx2.log
+2018-01-11 16:37:42,997 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx2.log
+2018-01-11 16:37:43,004 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.polling.mule.default
+2018-01-11 16:37:43,030 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.file.mule.default
+2018-01-11 16:37:43,122 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-01-11 16:37:43,127 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: pollFlow
+2018-01-11 16:37:43,127 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@18b74ea
+2018-01-11 16:37:43,858 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 16:37:43,858 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 16:37:46,896 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'poll'                                      +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 16:37:46,907 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-01-11 16:37:46,907 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-01-11 16:37:46,939 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Connected: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=52a33c3f
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 16:37:46,939 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Starting: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=52a33c3f
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 16:37:46,940 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.polling.mule.default
+2018-01-11 16:37:46,941 [main] INFO  org.mule.transport.file.FileConnector - Connected: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=3d0cac1f
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 16:37:46,941 [main] INFO  org.mule.transport.file.FileConnector - Starting: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=3d0cac1f
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 16:37:46,941 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.file.mule.default
+2018-01-11 16:37:46,945 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 16:37:46,950 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-01-11 16:37:46,951 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: pollFlow
+2018-01-11 16:37:46,985 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Registering listener: pollFlow on endpointUri: polling://-1912630717
+2018-01-11 16:37:46,997 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 16:37:47,032 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising Bean: polling://pollFlow/1696136701
+2018-01-11 16:37:47,032 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting Bean: polling://pollFlow/1696136701
+2018-01-11 16:37:47,033 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Connecting clusterizable message receiver
+2018-01-11 16:37:47,034 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 16:37:47,034 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Starting clusterizable message receiver
+2018-01-11 16:37:47,041 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-01-11 16:37:47,061 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Attempting to register service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 16:37:47,062 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Endpoint Service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 16:37:47,065 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.polling.mule.default"
+2018-01-11 16:37:47,066 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.file.mule.default"
+2018-01-11 16:37:47,069 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: poll                                                  *
+* OS encoding: \, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   DevKit Extension Information                                     *
+*   JMX Agent                                                        *
+*   Batch module default engine                                      *
+*   Wrapper Manager                                                  *
+**********************************************************************
+2018-01-11 16:37:47,363 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - [{NAME=Test, ID=1}, {NAME=Test user 2, ID=2}]
+2018-01-11 16:37:47,512 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'connector.file.mule.default.dispatcher.1960619700'. Object is: FileMessageDispatcher
+2018-01-11 16:37:47,517 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'connector.file.mule.default.dispatcher.1960619700'. Object is: FileMessageDispatcher
+2018-01-11 16:37:47,528 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\a7f64310-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:48,153 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:48,156 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\a856d9a0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:48,157 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:49,058 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:49,070 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\a8e18d70-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:49,074 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:50,059 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:50,069 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\a97a23f0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:50,073 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:51,057 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:51,065 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\aa126c50-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:51,067 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:52,058 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:52,068 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\aaab29e0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:52,076 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:53,054 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:53,065 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\ab434b30-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:53,069 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:54,055 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:54,065 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\abdc2fd0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:54,068 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:55,055 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:55,066 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\ac749f40-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:55,071 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:56,054 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:56,064 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\ad0ce7a0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:56,069 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:57,053 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:57,062 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\ada55710-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:57,065 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:58,053 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:58,063 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\ae3ded90-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:58,067 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:37:59,053 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:37:59,063 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\aed65d00-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:37:59,067 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:00,054 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:00,064 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\af6f1a90-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:00,068 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:01,054 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:01,077 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b007b110-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:01,082 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:02,055 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:02,064 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b0a06ea0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:02,068 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:03,052 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:03,060 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b1388ff0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:03,063 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:04,054 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:04,063 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b1d17490-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:04,068 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:05,053 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:05,063 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b26a0b10-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:05,068 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:06,054 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:06,063 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b302a190-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:06,068 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:07,052 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:07,061 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b39ae9f0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:07,065 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:08,054 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:08,066 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b433a780-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:08,070 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:09,040 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:09,044 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b4c9f410-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:09,045 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:10,053 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:10,062 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b564ad70-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:10,066 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:11,052 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:11,063 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b5fd1ce0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:11,067 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:12,053 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:12,061 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b6960180-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:12,063 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:13,056 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:13,065 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b72ee620-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:13,069 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:14,053 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:14,065 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b7c72e80-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:14,069 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:15,042 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:15,044 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b85da220-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:15,045 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:16,041 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:16,056 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b8f638a0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:16,058 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:17,044 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:17,046 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b98f4450-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:17,048 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:18,054 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:18,072 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\ba29d6a0-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:18,075 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:19,053 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:19,063 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\bac21f00-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:19,070 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:20,051 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:20,060 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\bb5a4050-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:20,064 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:21,046 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:21,051 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\bbf1ec70-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:21,054 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:38:22,039 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:38:22,042 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\bc897180-f6bf-11e7-bd7a-acfdceeecbdb.dat
+2018-01-11 16:38:22,043 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:41:47,647 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'poll'                                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 16:41:47,837 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-01-11 16:41:47,937 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-01-11 16:41:48,032 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-01-11 16:41:48,032 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.8)
+2018-01-11 16:41:48,098 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@24a1c17f: startup date [Thu Jan 11 16:41:48 IST 2018]; root of context hierarchy
+2018-01-11 16:41:49,172 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-01-11 16:41:49,478 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 16:41:49,478 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 16:41:49,478 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 16:41:49,478 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 16:41:49,947 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-01-11 16:41:50,150 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx2.log
+2018-01-11 16:41:50,163 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx2.log
+2018-01-11 16:41:50,169 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.polling.mule.default
+2018-01-11 16:41:50,195 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.file.mule.default
+2018-01-11 16:41:50,282 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-01-11 16:41:50,286 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: pollFlow
+2018-01-11 16:41:50,286 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@67536ae0
+2018-01-11 16:41:50,986 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 16:41:50,986 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 16:41:54,023 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'poll'                                      +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 16:41:54,032 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-01-11 16:41:54,032 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-01-11 16:41:54,054 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Connected: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=60bb7995
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 16:41:54,054 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Starting: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=60bb7995
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 16:41:54,055 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.polling.mule.default
+2018-01-11 16:41:54,056 [main] INFO  org.mule.transport.file.FileConnector - Connected: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=48a663e9
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 16:41:54,056 [main] INFO  org.mule.transport.file.FileConnector - Starting: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=48a663e9
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 16:41:54,056 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.file.mule.default
+2018-01-11 16:41:54,060 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 16:41:54,062 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-01-11 16:41:54,064 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: pollFlow
+2018-01-11 16:41:54,096 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Registering listener: pollFlow on endpointUri: polling://-1912630717
+2018-01-11 16:41:54,112 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 16:41:54,138 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising Bean: polling://pollFlow/1256918571
+2018-01-11 16:41:54,138 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting Bean: polling://pollFlow/1256918571
+2018-01-11 16:41:54,139 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Connecting clusterizable message receiver
+2018-01-11 16:41:54,139 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 16:41:54,139 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Starting clusterizable message receiver
+2018-01-11 16:41:54,146 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-01-11 16:41:54,164 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Attempting to register service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 16:41:54,164 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Endpoint Service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 16:41:54,166 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.polling.mule.default"
+2018-01-11 16:41:54,166 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.file.mule.default"
+2018-01-11 16:41:54,170 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: poll                                                  *
+* OS encoding: \, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   DevKit Extension Information                                     *
+*   JMX Agent                                                        *
+*   Batch module default engine                                      *
+*   Wrapper Manager                                                  *
+**********************************************************************
+2018-01-11 16:41:54,452 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - [{NAME=ANAND, ID=4}]
+2018-01-11 16:41:54,516 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'connector.file.mule.default.dispatcher.1677859592'. Object is: FileMessageDispatcher
+2018-01-11 16:41:54,522 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'connector.file.mule.default.dispatcher.1677859592'. Object is: FileMessageDispatcher
+2018-01-11 16:41:54,530 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\3b2fedc0-f6c0-11e7-a971-acfdceeecbdb.dat
+2018-01-11 16:42:04,166 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:42:04,175 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\40efcaa0-f6c0-11e7-a971-acfdceeecbdb.dat
+2018-01-11 16:42:04,177 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:42:14,163 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:42:14,170 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\46e50f60-f6c0-11e7-a971-acfdceeecbdb.dat
+2018-01-11 16:42:14,172 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:42:24,170 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:42:24,185 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\4cdc4ff0-f6c0-11e7-a971-acfdceeecbdb.dat
+2018-01-11 16:42:24,187 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:42:34,165 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:42:34,185 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\52d14690-f6c0-11e7-a971-acfdceeecbdb.dat
+2018-01-11 16:42:34,189 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 16:42:44,166 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - [{NAME=ANAND, ID=6}]
+2018-01-11 16:42:44,173 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\58c72790-f6c0-11e7-a971-acfdceeecbdb.dat
+2018-01-11 16:42:54,162 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 16:42:54,176 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\5ebcba70-f6c0-11e7-a971-acfdceeecbdb.dat
+2018-01-11 16:42:54,181 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:03:42,023 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'poll'                                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:03:42,199 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-01-11 17:03:42,312 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-01-11 17:03:42,419 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-01-11 17:03:42,421 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.8)
+2018-01-11 17:03:42,483 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@245a26e1: startup date [Thu Jan 11 17:03:42 IST 2018]; root of context hierarchy
+2018-01-11 17:03:43,598 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-01-11 17:03:43,936 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:03:43,936 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:03:43,936 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:03:43,936 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:03:44,441 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-01-11 17:03:44,646 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx2.log
+2018-01-11 17:03:44,659 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx2.log
+2018-01-11 17:03:44,665 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.polling.mule.default
+2018-01-11 17:03:44,692 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.file.mule.default
+2018-01-11 17:03:44,778 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-01-11 17:03:44,782 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: pollFlow
+2018-01-11 17:03:44,782 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@30ec7d21
+2018-01-11 17:03:45,490 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 17:03:45,490 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 17:03:48,525 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'poll'                                      +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:03:48,535 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-01-11 17:03:48,536 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-01-11 17:03:48,559 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Connected: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=4ecd00b5
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:03:48,560 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Starting: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=4ecd00b5
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:03:48,560 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.polling.mule.default
+2018-01-11 17:03:48,561 [main] INFO  org.mule.transport.file.FileConnector - Connected: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=2acdcce8
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:03:48,561 [main] INFO  org.mule.transport.file.FileConnector - Starting: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=2acdcce8
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:03:48,561 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.file.mule.default
+2018-01-11 17:03:48,565 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:03:48,568 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-01-11 17:03:48,570 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: pollFlow
+2018-01-11 17:03:48,602 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Registering listener: pollFlow on endpointUri: polling://-1912630717
+2018-01-11 17:03:48,614 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 17:03:48,630 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising Bean: polling://pollFlow/1689262323
+2018-01-11 17:03:48,630 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting Bean: polling://pollFlow/1689262323
+2018-01-11 17:03:48,631 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Connecting clusterizable message receiver
+2018-01-11 17:03:48,632 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 17:03:48,632 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Starting clusterizable message receiver
+2018-01-11 17:03:48,639 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-01-11 17:03:48,657 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Attempting to register service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 17:03:48,658 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Endpoint Service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 17:03:48,663 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.polling.mule.default"
+2018-01-11 17:03:48,663 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.file.mule.default"
+2018-01-11 17:03:48,666 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: poll                                                  *
+* OS encoding: \, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   DevKit Extension Information                                     *
+*   JMX Agent                                                        *
+*   Batch module default engine                                      *
+*   Wrapper Manager                                                  *
+**********************************************************************
+2018-01-11 17:03:48,954 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:03:48,999 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'connector.file.mule.default.dispatcher.639465480'. Object is: FileMessageDispatcher
+2018-01-11 17:03:49,004 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'connector.file.mule.default.dispatcher.639465480'. Object is: FileMessageDispatcher
+2018-01-11 17:03:49,012 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\4aadcfd0-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:03:49,014 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:03:58,661 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:03:58,673 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\506ff6a0-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:03:58,679 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:04:08,657 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:04:08,667 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\56651450-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:04:08,671 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:04:18,663 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:04:18,685 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\5c5bdfb0-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:04:18,691 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:04:28,656 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:04:28,684 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\6250d650-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:04:28,686 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:04:38,656 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:04:38,668 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\6846b750-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:04:38,671 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:04:48,639 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:04:48,643 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\6e398b10-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:04:48,644 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:04:58,661 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:04:58,686 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\743363b0-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:04:58,687 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:05:08,653 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:05:08,672 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\7a27be10-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:05:08,674 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:05:18,653 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:05:18,662 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\801d9f10-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:05:18,665 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:05:28,652 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:05:28,661 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\861331f0-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:05:28,665 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:05:38,660 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:05:38,684 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\8c0a4b70-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:05:38,686 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:05:48,653 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:05:48,664 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\91ff1b00-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:05:48,666 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:05:58,652 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:05:58,662 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\97f4fc00-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:05:58,667 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:06:08,653 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:06:08,663 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\9deadd00-f6c3-11e7-9276-acfdceeecbdb.dat
+2018-01-11 17:06:08,667 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:06:45,018 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'poll'                                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:06:45,204 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-01-11 17:06:45,303 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-01-11 17:06:45,394 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-01-11 17:06:45,395 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.8)
+2018-01-11 17:06:45,465 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@24a1c17f: startup date [Thu Jan 11 17:06:45 IST 2018]; root of context hierarchy
+2018-01-11 17:06:46,573 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-01-11 17:06:46,896 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:06:46,896 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:06:46,896 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:06:46,896 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:06:47,394 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-01-11 17:06:47,595 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx2.log
+2018-01-11 17:06:47,607 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx2.log
+2018-01-11 17:06:47,612 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.polling.mule.default
+2018-01-11 17:06:47,642 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.file.mule.default
+2018-01-11 17:06:47,743 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-01-11 17:06:47,747 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: pollFlow
+2018-01-11 17:06:47,747 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@67536ae0
+2018-01-11 17:06:48,120 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 17:06:48,120 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 17:06:51,480 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'poll'                                      +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:06:51,490 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-01-11 17:06:51,490 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-01-11 17:06:51,514 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Connected: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=60bb7995
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:06:51,514 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Starting: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=60bb7995
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:06:51,514 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.polling.mule.default
+2018-01-11 17:06:51,515 [main] INFO  org.mule.transport.file.FileConnector - Connected: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=48a663e9
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:06:51,515 [main] INFO  org.mule.transport.file.FileConnector - Starting: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=48a663e9
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:06:51,515 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.file.mule.default
+2018-01-11 17:06:51,517 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:06:51,519 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-01-11 17:06:51,520 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: pollFlow
+2018-01-11 17:06:51,550 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Registering listener: pollFlow on endpointUri: polling://-1912630717
+2018-01-11 17:06:51,561 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 17:06:51,579 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising Bean: polling://pollFlow/1256918571
+2018-01-11 17:06:51,580 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting Bean: polling://pollFlow/1256918571
+2018-01-11 17:06:51,581 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Connecting clusterizable message receiver
+2018-01-11 17:06:51,581 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 17:06:51,581 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Starting clusterizable message receiver
+2018-01-11 17:06:51,588 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-01-11 17:06:51,612 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Attempting to register service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 17:06:51,613 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Endpoint Service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 17:06:51,616 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.polling.mule.default"
+2018-01-11 17:06:51,616 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.file.mule.default"
+2018-01-11 17:06:51,623 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: poll                                                  *
+* OS encoding: \, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   DevKit Extension Information                                     *
+*   JMX Agent                                                        *
+*   Batch module default engine                                      *
+*   Wrapper Manager                                                  *
+**********************************************************************
+2018-01-11 17:06:51,940 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:06:51,991 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'connector.file.mule.default.dispatcher.239437845'. Object is: FileMessageDispatcher
+2018-01-11 17:06:51,997 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'connector.file.mule.default.dispatcher.239437845'. Object is: FileMessageDispatcher
+2018-01-11 17:06:52,006 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\b7c07af0-f6c3-11e7-b4d7-acfdceeecbdb.dat
+2018-01-11 17:06:52,009 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:07:01,608 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:07:01,620 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\bd7b9ce0-f6c3-11e7-b4d7-acfdceeecbdb.dat
+2018-01-11 17:07:01,622 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:07:11,588 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:07:11,591 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\c36dd460-f6c3-11e7-b4d7-acfdceeecbdb.dat
+2018-01-11 17:07:11,593 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:07:21,611 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:07:21,630 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\c96785f0-f6c3-11e7-b4d7-acfdceeecbdb.dat
+2018-01-11 17:07:21,633 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:07:31,605 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:07:31,627 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\cf5c7c90-f6c3-11e7-b4d7-acfdceeecbdb.dat
+2018-01-11 17:07:31,630 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:07:41,606 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:07:41,613 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\d55284a0-f6c3-11e7-b4d7-acfdceeecbdb.dat
+2018-01-11 17:07:41,615 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:07:51,588 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:07:51,593 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\db453150-f6c3-11e7-b4d7-acfdceeecbdb.dat
+2018-01-11 17:07:51,595 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:08:01,602 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:08:01,621 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\e13dd170-f6c3-11e7-b4d7-acfdceeecbdb.dat
+2018-01-11 17:08:01,623 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:08:10,971 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'poll'                                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:08:11,149 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-01-11 17:08:11,261 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-01-11 17:08:11,380 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-01-11 17:08:11,381 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.8)
+2018-01-11 17:08:11,448 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@51f49060: startup date [Thu Jan 11 17:08:11 IST 2018]; root of context hierarchy
+2018-01-11 17:08:12,539 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-01-11 17:08:12,875 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:08:12,876 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:08:12,876 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:08:12,876 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:08:13,366 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-01-11 17:08:13,568 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx2.log
+2018-01-11 17:08:13,582 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx2.log
+2018-01-11 17:08:13,588 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.polling.mule.default
+2018-01-11 17:08:13,617 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.file.mule.default
+2018-01-11 17:08:13,705 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-01-11 17:08:13,708 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: pollFlow
+2018-01-11 17:08:13,708 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@1665fa54
+2018-01-11 17:08:14,072 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 17:08:14,072 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 17:08:17,396 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'poll'                                      +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:08:17,407 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-01-11 17:08:17,407 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-01-11 17:08:17,429 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Connected: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=4a3bd45b
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:08:17,429 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Starting: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=4a3bd45b
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:08:17,431 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.polling.mule.default
+2018-01-11 17:08:17,432 [main] INFO  org.mule.transport.file.FileConnector - Connected: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=56e9a474
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:08:17,432 [main] INFO  org.mule.transport.file.FileConnector - Starting: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=56e9a474
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:08:17,432 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.file.mule.default
+2018-01-11 17:08:17,434 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:08:17,436 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-01-11 17:08:17,437 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: pollFlow
+2018-01-11 17:08:17,472 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Registering listener: pollFlow on endpointUri: polling://-1912630717
+2018-01-11 17:08:17,486 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 17:08:17,505 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising Bean: polling://pollFlow/424188711
+2018-01-11 17:08:17,506 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting Bean: polling://pollFlow/424188711
+2018-01-11 17:08:17,507 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Connecting clusterizable message receiver
+2018-01-11 17:08:17,507 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 17:08:17,507 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Starting clusterizable message receiver
+2018-01-11 17:08:17,514 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-01-11 17:08:17,535 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Attempting to register service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 17:08:17,536 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Endpoint Service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 17:08:17,538 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.polling.mule.default"
+2018-01-11 17:08:17,538 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.file.mule.default"
+2018-01-11 17:08:17,543 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: poll                                                  *
+* OS encoding: \, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   DevKit Extension Information                                     *
+*   JMX Agent                                                        *
+*   Batch module default engine                                      *
+*   Wrapper Manager                                                  *
+**********************************************************************
+2018-01-11 17:08:17,856 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:08:17,907 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'connector.file.mule.default.dispatcher.2097423469'. Object is: FileMessageDispatcher
+2018-01-11 17:08:17,912 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'connector.file.mule.default.dispatcher.2097423469'. Object is: FileMessageDispatcher
+2018-01-11 17:08:17,923 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\eaf65fc0-f6c3-11e7-807c-acfdceeecbdb.dat
+2018-01-11 17:08:17,925 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:08:27,535 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:08:27,543 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\f0b2e140-f6c3-11e7-807c-acfdceeecbdb.dat
+2018-01-11 17:08:27,546 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:08:34,641 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'poll'                                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:08:34,824 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-01-11 17:08:34,933 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-01-11 17:08:35,046 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-01-11 17:08:35,047 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.8)
+2018-01-11 17:08:35,124 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@51f49060: startup date [Thu Jan 11 17:08:35 IST 2018]; root of context hierarchy
+2018-01-11 17:08:36,275 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-01-11 17:08:36,616 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:08:36,617 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:08:36,617 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:08:36,617 [main] WARN  org.mule.expression.DefaultExpressionManager - Expression string is not an expression.  Use isExpression(String) to validate first
+2018-01-11 17:08:37,118 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-01-11 17:08:37,334 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-tx-log\tx2.log
+2018-01-11 17:08:37,347 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\poll\queue-xa-tx-log\tx2.log
+2018-01-11 17:08:37,353 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.polling.mule.default
+2018-01-11 17:08:37,383 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising connector: connector.file.mule.default
+2018-01-11 17:08:37,477 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-01-11 17:08:37,480 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: pollFlow
+2018-01-11 17:08:37,480 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@1665fa54
+2018-01-11 17:08:38,182 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 17:08:38,183 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\poll\poll.xml'}]"
+2018-01-11 17:08:41,219 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'poll'                                      +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:08:41,226 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-01-11 17:08:41,226 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-01-11 17:08:41,269 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Connected: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=4a3bd45b
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:08:41,269 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Starting: MessageProcessorPollingConnector
+{
+  name=connector.polling.mule.default
+  lifecycle=initialise
+  this=4a3bd45b
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[polling]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:08:41,269 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.polling.mule.default
+2018-01-11 17:08:41,270 [main] INFO  org.mule.transport.file.FileConnector - Connected: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=56e9a474
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:08:41,270 [main] INFO  org.mule.transport.file.FileConnector - Starting: FileConnector
+{
+  name=connector.file.mule.default
+  lifecycle=initialise
+  this=56e9a474
+  numberOfConcurrentTransactedReceivers=4
+  createMultipleTransactedReceivers=true
+  connected=true
+  supportedProtocols=[file]
+  serviceOverrides=<none>
+}
+
+2018-01-11 17:08:41,270 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting connector: connector.file.mule.default
+2018-01-11 17:08:41,272 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-11 17:08:41,274 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-01-11 17:08:41,275 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: pollFlow
+2018-01-11 17:08:41,304 [main] INFO  org.mule.transport.polling.MessageProcessorPollingConnector - Registering listener: pollFlow on endpointUri: polling://-1912630717
+2018-01-11 17:08:41,316 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 17:08:41,332 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising Bean: polling://pollFlow/424188711
+2018-01-11 17:08:41,333 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting Bean: polling://pollFlow/424188711
+2018-01-11 17:08:41,335 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Connecting clusterizable message receiver
+2018-01-11 17:08:41,336 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'null'. Object is: MessageProcessorPollingMessageReceiver
+2018-01-11 17:08:41,336 [main] INFO  org.mule.transport.polling.MessageProcessorPollingMessageReceiver - Starting clusterizable message receiver
+2018-01-11 17:08:41,343 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-01-11 17:08:41,360 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Attempting to register service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 17:08:41,361 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Endpoint Service with name: Mule.poll:type=Endpoint,service="pollFlow",connector=connector.polling.mule.default,name="endpoint.polling.1912630717"
+2018-01-11 17:08:41,362 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.polling.mule.default"
+2018-01-11 17:08:41,363 [main] INFO  org.mule.module.management.agent.AbstractJmxAgent - Registered Connector Service with name Mule.poll:type=Connector,name="connector.file.mule.default"
+2018-01-11 17:08:41,365 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: poll                                                  *
+* OS encoding: \, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   DevKit Extension Information                                     *
+*   JMX Agent                                                        *
+*   Batch module default engine                                      *
+*   Wrapper Manager                                                  *
+**********************************************************************
+2018-01-11 17:08:51,683 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:08:51,735 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising: 'connector.file.mule.default.dispatcher.461346768'. Object is: FileMessageDispatcher
+2018-01-11 17:08:51,741 [pool-17-thread-1] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting: 'connector.file.mule.default.dispatcher.461346768'. Object is: FileMessageDispatcher
+2018-01-11 17:08:51,750 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\ff1ff6f0-f6c3-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:08:51,752 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:09:01,344 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:09:01,348 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\04d94420-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:09:01,349 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:09:11,364 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:09:11,377 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\0ad28080-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:09:11,381 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:09:21,361 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:09:21,368 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\10c7c540-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:09:21,372 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:09:31,360 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:09:31,385 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\16bda640-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:09:31,387 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:09:41,358 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:09:41,369 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\1cb36030-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:09:41,371 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:09:51,360 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:09:51,369 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\22a91a20-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:09:51,371 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:10:01,358 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:10:01,371 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\289f4940-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:10:01,376 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:10:11,358 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:10:11,380 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\2e94b510-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:10:11,383 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:10:21,355 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:10:21,364 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\348a47f0-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:10:21,367 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results
+2018-01-11 17:10:31,354 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - [{NAME=ANAND, ID=7}]
+2018-01-11 17:10:31,374 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\3a81d6a0-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:10:41,356 [pool-17-thread-1] INFO  org.mule.api.processor.LoggerMessageProcessor - []
+2018-01-11 17:10:41,368 [pool-17-thread-1] INFO  org.mule.transport.file.FileConnector - Writing file to: C:\Users\EAI\AnypointStudio\workspace\poll\src\main\resources\out\407609f0-f6c4-11e7-ae8b-acfdceeecbdb.dat
+2018-01-11 17:10:41,372 [pool-17-thread-1] INFO  org.mule.transport.polling.watermark.Watermark - Watermark value will not be updated since poll processor returned no results

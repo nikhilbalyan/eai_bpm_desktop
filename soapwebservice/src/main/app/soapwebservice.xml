@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     </http:request-config>
     <flow name="soapwebserviceFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
-        <flow-ref name="" doc:name="setcodesubflow"/>
+        <flow-ref name="soapwebserviceFlow" doc:name="soapwebserviceFlow"/>
         <ws:consumer config-ref="Web_Service_Consumer" operation="listAllFlights" doc:name="Web Service Consumer"/>
         <dw:transform-message doc:name="Transform Message" metadata:id="447996f7-aae5-4b50-88b3-2ccf89173fd7">
             <dw:set-payload><![CDATA[%dw 1.0

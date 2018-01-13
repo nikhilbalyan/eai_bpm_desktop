@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+    <file:connector name="File" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"/>
+    <file:connector name="File1" autoDelete="true" streaming="true" validateConnections="true" pollingFrequency="10000" doc:name="File"/>
+    <file:connector name="File2" autoDelete="true" streaming="true" validateConnections="true" pollingFrequency="20000" doc:name="File"/>
+    <file:connector name="File3" autoDelete="true" streaming="true" validateConnections="true" pollingFrequency="10000" doc:name="File"/>
+    <flow name="mule_flow_transfer_fileFlow">
+        <file:inbound-endpoint path="D:\source" responseTimeout="10000" doc:name="File" connector-ref="File3"/>
+        <logger level="INFO" doc:name="Logger"/>
+        <expression-component doc:name="Expression"><![CDATA[
+    Thread.sleep(100000);
+]]></expression-component>
+        
+        <file:outbound-endpoint path="D:\destination" responseTimeout="10000" doc:name="File" connector-ref="File2"/>
+    </flow>
+</mule>
