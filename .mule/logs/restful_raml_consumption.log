@@ -1,0 +1,81 @@
+2018-01-13 23:37:53,823 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Initializing app 'restful_raml_consumption'              +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-13 23:37:53,983 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising RegistryBroker
+2018-01-13 23:37:54,082 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Starting discovery of extensions
+2018-01-13 23:37:54,197 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Discovered 1 extensions
+2018-01-13 23:37:54,197 [main] INFO  org.mule.module.extension.internal.manager.DefaultExtensionManager - Registering extension validation (version 3.8)
+2018-01-13 23:37:54,267 [main] INFO  org.mule.config.spring.MuleArtifactContext - Refreshing org.mule.config.spring.MuleArtifactContext@73511076: startup date [Sat Jan 13 23:37:54 IST 2018]; root of context hierarchy
+2018-01-13 23:37:55,650 [main] INFO  org.mule.config.spring.processors.NoDevkitInjectorProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-01-13 23:37:56,315 [main] WARN  org.mule.module.ognl.expression.OgnlExpressionEvaluator - OGNL module is deprecated and will be removed in Mule 4.0. Use MEL expressions instead.
+2018-01-13 23:37:56,943 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\restful_raml_consumption\queue-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\restful_raml_consumption\queue-tx-log\tx2.log
+2018-01-13 23:37:56,958 [main] INFO  org.mule.util.journal.TransactionJournal - Using files for tx logs C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\restful_raml_consumption\queue-xa-tx-log\tx1.log and C:\Users\EAI\AnypointStudio\workspace\.mule\.\.mule\restful_raml_consumption\queue-xa-tx-log\tx2.log
+2018-01-13 23:37:57,032 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Initialising model: _muleSystemModel
+2018-01-13 23:37:57,036 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: sampleapplication-main
+2018-01-13 23:37:57,036 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=404, exceptions=[org.mule.module.apikit.exception.NotFoundException]}
+2018-01-13 23:37:57,040 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=405, exceptions=[org.mule.module.apikit.exception.MethodNotAllowedException]}
+2018-01-13 23:37:57,040 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=415, exceptions=[org.mule.module.apikit.exception.UnsupportedMediaTypeException]}
+2018-01-13 23:37:57,040 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=406, exceptions=[org.mule.module.apikit.exception.NotAcceptableException]}
+2018-01-13 23:37:57,040 [main] INFO  org.mule.module.apikit.MappingExceptionListener - Initialising exception listener: MappingExceptionListener{statusCode=400, exceptions=[org.mule.module.apikit.exception.BadRequestException]}
+2018-01-13 23:37:57,061 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: sampleapplication-main.stage1
+2018-01-13 23:37:57,070 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: sampleapplication-console
+2018-01-13 23:37:57,070 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@5e5beb8a
+2018-01-13 23:37:57,074 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: sampleapplication-console.stage1
+2018-01-13 23:37:57,076 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: get:/book:sampleapplication-config
+2018-01-13 23:37:57,076 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@297c9a9b
+2018-01-13 23:37:57,080 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: get:/book:sampleapplication-config.stage1
+2018-01-13 23:37:57,081 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: get:/book/{ID}:sampleapplication-config
+2018-01-13 23:37:57,081 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@6cbbb9c4
+2018-01-13 23:37:57,083 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: get:/book/{ID}:sampleapplication-config.stage1
+2018-01-13 23:37:57,084 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: post:/book:sampleapplication-config
+2018-01-13 23:37:57,084 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@74024f3
+2018-01-13 23:37:57,086 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: post:/book:sampleapplication-config.stage1
+2018-01-13 23:37:57,087 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Initialising flow: restful_raml_consumptionFlow
+2018-01-13 23:37:57,087 [main] INFO  org.mule.exception.DefaultMessagingExceptionStrategy - Initialising exception listener: org.mule.exception.DefaultMessagingExceptionStrategy@5995851e
+2018-01-13 23:37:57,095 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Initialising service: restful_raml_consumptionFlow.stage1
+2018-01-13 23:37:57,632 [main] INFO  org.mule.module.apikit.Configuration - Building resource URI cache...
+2018-01-13 23:37:57,888 [main] INFO  org.mule.api.security.tls.TlsProperties - Loading configuration file: tls-default.conf
+2018-01-13 23:37:57,899 [main] INFO  org.mule.config.spring.SpringXmlConfigurationBuilder - Configured Mule using "org.mule.config.spring.SpringXmlConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\restful_raml_consumption\sampleapplication.xml'}, ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\restful_raml_consumption\restful_raml_consumption.xml'}]"
+2018-01-13 23:37:57,899 [main] INFO  org.mule.config.builders.AutoConfigurationBuilder - Configured Mule using "org.mule.config.builders.AutoConfigurationBuilder" with configuration resource(s): "[ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\restful_raml_consumption\sampleapplication.xml'}, ConfigResource{resourceName='C:\Users\EAI\AnypointStudio\workspace\.mule\apps\restful_raml_consumption\restful_raml_consumption.xml'}]"
+2018-01-13 23:38:00,919 [main] INFO  org.mule.module.launcher.application.DefaultMuleApplication - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Starting app 'restful_raml_consumption'                  +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-13 23:38:00,920 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Starting ResourceManager
+2018-01-13 23:38:00,920 [main] INFO  org.mule.util.queue.QueueXaResourceManager - Started ResourceManager
+2018-01-13 23:38:00,968 [main] INFO  org.mule.module.http.internal.listener.DefaultHttpListenerConfig - Listening for requests on http://0.0.0.0:8081
+2018-01-13 23:38:00,970 [main] INFO  org.mule.modules.oauth2.provider.agents.DefaultSplashScreenAgent - 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ DevKit Extensions (0) used in this application 
+                             +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2018-01-13 23:38:00,973 [main] INFO  org.mule.lifecycle.AbstractLifecycleManager - Starting model: _muleSystemModel
+2018-01-13 23:38:00,974 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: sampleapplication-main
+2018-01-13 23:38:00,975 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: sampleapplication-main.stage1
+2018-01-13 23:38:00,983 [main] INFO  org.mule.module.apikit.Configuration - 
+********************************************************************************
+* APIKit Console URL: http://127.0.0.1:8081/console                            *
+********************************************************************************
+2018-01-13 23:38:00,983 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: sampleapplication-console
+2018-01-13 23:38:00,983 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: sampleapplication-console.stage1
+2018-01-13 23:38:00,986 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: get:/book:sampleapplication-config
+2018-01-13 23:38:00,987 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: get:/book:sampleapplication-config.stage1
+2018-01-13 23:38:00,989 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: get:/book/{ID}:sampleapplication-config
+2018-01-13 23:38:00,989 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: get:/book/{ID}:sampleapplication-config.stage1
+2018-01-13 23:38:00,991 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: post:/book:sampleapplication-config
+2018-01-13 23:38:00,991 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: post:/book:sampleapplication-config.stage1
+2018-01-13 23:38:00,994 [main] INFO  org.mule.construct.FlowConstructLifecycleManager - Starting flow: restful_raml_consumptionFlow
+2018-01-13 23:38:00,994 [main] INFO  org.mule.processor.SedaStageLifecycleManager - Starting service: restful_raml_consumptionFlow.stage1
+2018-01-13 23:38:01,422 [main] INFO  org.mule.module.management.agent.WrapperManagerAgent - This JVM hasn't been launched by the wrapper, the agent will not run.
+2018-01-13 23:38:01,437 [main] INFO  org.mule.DefaultMuleContext - 
+**********************************************************************
+* Application: restful_raml_consumption                              *
+* OS encoding: \, Mule encoding: UTF-8                               *
+*                                                                    *
+* Agents Running:                                                    *
+*   DevKit Extension Information                                     *
+*   JMX Agent                                                        *
+*   Batch module default engine                                      *
+*   Wrapper Manager                                                  *
+**********************************************************************
