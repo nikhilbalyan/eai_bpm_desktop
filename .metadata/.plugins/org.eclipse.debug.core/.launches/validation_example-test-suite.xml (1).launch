@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.munit.launchconfig">
+<listAttribute key="Mpath">
+<listEntry value="C:\Users\EAI\AnypointStudio\workspace\validation_example_test_cases\src\test\munit\validation_example-test-suite.xml"/>
+</listAttribute>
+<stringAttribute key="Ppath" value="C:\Users\EAI\AnypointStudio\workspace\validation_example_test_cases"/>
+<stringAttribute key="launch_mule_server_version" value="org.mule.tooling.server.3.8.5.ee"/>
+<listAttribute key="mule-project-names">
+<listEntry value="validation_example_test_cases"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="validation_example-test-suite.xml"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="validation_example_test_cases"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Djava.library.path=&#13;&#10;-DmunitProjectName=validation_example_test_cases&#13;&#10;-Dlog4j.skipJansi=true"/>
+<stringAttribute key="resource" value="validation_example-test-suite.xml"/>
+</launchConfiguration>

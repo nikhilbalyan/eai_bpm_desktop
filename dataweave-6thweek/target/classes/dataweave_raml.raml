@@ -1,0 +1,31 @@
+#%RAML 1.0
+version: v1
+title: dataweave_raml
+
+
+/dataweave:
+ get:
+  responses:
+   200:
+    body:
+     application/json:
+      example:
+        {
+          "batch_Id": 3,
+          "MONTHFROM": "JANUARY",
+          "ENDDATE": "JULY",
+          "MANAGERNAME": "JOJO",
+          "campusminds": [{
+            "campus_mind_mid": 105,
+            "mindname": "jojo",
+            "age": 21,
+            "track": "EAI",
+            "orchardid": 3
+          }, {
+            "campus_mind_mid": 106,
+            "mindname": "jojo",
+            "age": 21,
+            "track": "EAI",
+            "orchardid": 3
+          }]
+        }

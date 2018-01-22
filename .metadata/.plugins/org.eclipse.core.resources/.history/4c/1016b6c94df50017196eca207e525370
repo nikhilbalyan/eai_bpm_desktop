@@ -1,5 +1,0 @@
-package app.myweb;
-
-public interface IHelloWorldService {
-
-}

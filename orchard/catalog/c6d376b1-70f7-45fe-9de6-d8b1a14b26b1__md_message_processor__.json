@@ -1,0 +1,16 @@
+{
+    "inputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "input_campus_minds"
+        }
+    },
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "output_campus_minds"
+        }
+    },
+    "id": "c6d376b1-70f7-45fe-9de6-d8b1a14b26b1",
+    "version": "5.2.0.0"
+}

@@ -1,4 +1,5 @@
-authenticated.users=[{"token"\:"a60fa6e6-7b5a-44c9-986e-da86d09f24f2","userId"\:"nikhilbalyan10","refreshToken"\:"","baseUrl"\:"https\://anypoint.mulesoft.com/"}]
-current.token=a60fa6e6-7b5a-44c9-986e-da86d09f24f2
+authenticated.users=[{"token"\:"d4393512-3301-4843-8709-3e1284076f28","userId"\:"nikhilbalyan10","refreshToken"\:"","baseUrl"\:"https\://anypoint.mulesoft.com/"}]
+current.token=d4393512-3301-4843-8709-3e1284076f28
 current.user=nikhilbalyan10
 eclipse.preferences.version=1
+expiration.time=100

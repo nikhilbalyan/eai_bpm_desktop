@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" 
+	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" 
+	xmlns:batch="http://www.mulesoft.org/schema/mule/batch" 
+	xmlns:sap="http://www.mulesoft.org/schema/mule/sap" 
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" 
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/sap http://www.mulesoft.org/schema/mule/sap/current/mule-sap.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+
+
+	<!-- In this file you should declare your inbound endpoints and from here control the access to your application -->
+
+	<flow name="fromSalesforceToSapFlow"   initialState="started" processingStrategy="synchronous">
+        <poll doc:name="Fireup Product Synchronization">
+            <fixed-frequency-scheduler frequency="${poll.frequencyMillis}" startDelay="${poll.start.delayMillis}"/>
+            <watermark variable="salesforceLastQueryDate" default-expression="${watermark.default.expression}" selector="MAX" selector-expression="#[payload.LastModifiedDate]"/>
+            <processor-chain doc:name="Processor Chain">
+                <expression-component doc:name="Acquire Lock"><![CDATA[app.registry['PollSynchronizer'].lock();]]></expression-component>
+                <sfdc:query config-ref="Salesforce" query="dsql:SELECT Id, Description, Name, LastModifiedById, LastModifiedDate, ProductCode FROM Product2 WHERE LastModifiedDate &gt; #[flowVars.salesforceLastQueryDate] AND ProductCode &lt;&gt; null AND (LastModifiedById &lt;&gt; '${sfdc.integration.user.id}') ORDER BY LastModifiedDate ASC LIMIT 200" doc:name="Quey Products from Salesforce" fetchSize="${page.size}"/>
+            </processor-chain>
+        </poll>
+        <batch:execute name="fromSalesforceToSapBatch" doc:name="Trigger fromSlesforceToSapBatch"/>
+        <exception-strategy ref="defaultChoiceExceptionStrategy" doc:name="Catch Exception and call defaultChoiceExceptionStrategy"/>
+    </flow>
+    <flow name="fromSapToSalesforceFlow"  initialState="started" processingStrategy="synchronous">
+        <poll doc:name="Fireup Material Synchronization">
+            <fixed-frequency-scheduler frequency="${poll.frequencyMillis}" startDelay="${poll.start.delayMillis}" timeUnit="SECONDS"/>
+            <watermark variable="sapLastQueryDate" default-expression="${watermark.default.expression}" selector="MAX" selector-expression="#[payload.LastModifiedDate]"/>
+            <processor-chain doc:name="Processor Chain">
+                <expression-component doc:name="Acquire Lock"><![CDATA[app.registry['PollSynchronizer'].lock();]]></expression-component>
+                <sap:outbound-endpoint exchange-pattern="request-response" connector-ref="SAP" type="function" functionName="ZMMFM_MATERIAL_GETLIST" xmlVersion="2" outputXml="true" responseTimeout="10000" doc:name="Query Materials from SAP">
+                    <sap:definition><![CDATA[<ZMMFM_MATERIAL_GETLIST type="function">
+	<import>
+			<IV_FROM_DATE>#[flowVars.sapLastQueryDate]</IV_FROM_DATE>
+	</import>
+</ZMMFM_MATERIAL_GETLIST>
+
+]]></sap:definition>
+
+
+                </sap:outbound-endpoint>
+                <dw:transform-message doc:name="ZMMFM_MATERIAL_GETLIST to Product2">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload.ZMMFM_MATERIAL_GETLIST.tables.T_MARA.*row map {
+	Name              : $.MAKTX,
+	LastModifiedDate  : $.LAST_MODIF_DATE,
+	CreatedById       : $.ERNAM,
+	LastModifiedById  : $.AENAM,
+	ProductCode       : $.MATNR
+} when payload.ZMMFM_MATERIAL_GETLIST.tables.T_MARA is :object otherwise []]]></dw:set-payload>
+                </dw:transform-message>
+
+            </processor-chain>
+        </poll>
+        <batch:execute name="fromSapToSalesforceBatch" doc:name="Trigger fromSapToSalesforceBatch"/>
+        <exception-strategy ref="defaultChoiceExceptionStrategy" doc:name="Catch Exception and call defaultChoiceExceptionStrategy"/>
+    </flow>
+</mule>

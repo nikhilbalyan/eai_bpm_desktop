@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <db:mysql-config name="MySQL_Configuration" host="localhost" port="3306" user="root" password="Welcome123" database="mulesoft" doc:name="MySQL Configuration"/>
+    <regex-filter value="#[payload.name]" pattern="^[a-zA-Z ]{5,15}$" name="Regex" doc:name="Regex"/>
+    <flow name="campusmindsFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/insert_campus_mind" doc:name="HTTP" allowedMethods="POST"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="c6d376b1-70f7-45fe-9de6-d8b1a14b26b1">
+            <dw:input-payload mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	age: payload.age as :string,
+	campus_mind_mid: payload.campus_mind_mid as :string,
+	name: payload.name,
+	orchardid: payload.orchardid as :string,
+	track: payload.track
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="here is payload #[payload.name]" level="INFO" doc:name="Logger"/>
+        <message-filter  throwOnUnaccepted="true" doc:name="Message_Exception">
+            <filter ref="Regex"/>
+        </message-filter>
+        <logger message="age = #[payload.age],  name = #[payload.name], track = #[payload.track], mid = #[payload.campus_mind_mid], mid = #[payload.orchardid]" level="INFO" doc:name="Logger"/>
+        <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[INSERT INTO CAMPUSMINDS(CAMPUS_MIND_MID, mindname, AGE, TRACK, ORCHARDID) values(#[payload.campus_mind_mid], #[payload.name], #[payload.age], #[payload.track], #[payload.orchardid]);]]></db:parameterized-query>
+        </db:insert>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <exception-strategy ref="Choice_Exception_Strategy" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="orchardFlow3">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/fetchall" doc:name="HTTP"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[SELECT * FROM ORCHARD JOIN CAMPUSMINDS ON ORCHARD.batch_Id = CAMPUSMINDS.ORCHARDID;]]></db:parameterized-query>
+        </db:select>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+    <flow name="orchardFlow1">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/fetch_orchard" allowedMethods="GET" doc:name="HTTP"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[SELECT * FROM ORCHARD;]]></db:parameterized-query>
+        </db:select>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+    <flow name="orchardFlow2">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/fetch_campusminds" allowedMethods="GET" doc:name="HTTP"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[SELECT * FROM CAMPUSMINDS;]]></db:parameterized-query>
+        </db:select>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+    <flow name="orchardFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/add_campus_mind" allowedMethods="POST" doc:name="HTTP"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="a3bb0ce8-969a-4c24-b24f-6df4458601ba">
+            <dw:input-payload mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	ENDDATE: payload.ENDDATE,
+	MANAGERNAME: payload.MANAGERNAME,
+	MONTHFROM: payload.MONTHFROM,
+	batch_Id: payload.batch_Id as :string
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[INSERT INTO ORCHARD(batch_Id, MONTHFROM, ENDDATE, MANAGERNAME) VALUES(#[payload.batch_Id], #[payload.MONTHFROM], #[payload.ENDDATE], #[payload.MANAGERNAME]);]]></db:parameterized-query>
+        </db:insert>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+    <flow name="onetomany">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/onetomany" doc:name="HTTP"/>
+        <logger message="bypassed json to object #[payload]" level="INFO" doc:name="Logger"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="c2736de1-90db-4e0b-a408-89a3a86a61e2">
+            <dw:input-payload mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+[{
+	batchID: payload.batchID,
+	campusMinds: [{
+		name: payload.campusMinds.name,
+		track: payload.campusMinds.track
+	}]
+++ (payload.campusMinds map ((campusMind , indexOfCampusMind) -> {
+		name: campusMind.name,
+		track: campusMind.track
+	}))
+} as :object {
+	class : "one_to_many.OrchardPojo"
+}]]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="before database" level="INFO" doc:name="Logger"/>
+        <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[INSERT INTO ORCHARD]]></db:parameterized-query>
+        </db:insert>
+    </flow>
+    <flow name="store_in_list">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/store" allowedMethods="POST" doc:name="HTTP"/>
+        <logger level="INFO" doc:name="Logger"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="995f622e-1668-4692-b6c6-18ea7b5478c2">
+            <dw:input-payload mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	batch_Id: payload.batch_Id,
+	campusMinds: payload.campusminds map ((campusmind , indexOfCampusmind) -> {
+		age: campusmind.age,
+		campus_mind_mid: campusmind.campus_mind_mid,
+		name: campusmind.mindname,
+		orchardid: campusmind.orchardid,
+		track: campusmind.track
+	}),
+	endDate: payload.ENDDATE,
+	managerName: payload.MANAGERNAME,
+	monthFrom: payload.MONTHFROM
+} as :object {
+	class : "one_to_many.OrchardCampusMindsPOJO"
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <set-variable variableName="payload data" value="#[payload]" doc:name="Variable"/>
+        <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[INSERT INTO ORCHARD(batch_id, MONTHFROM, ENDDATE, MANAGERNAME) VALUES ( #[payload.batch_Id], #[payload.monthFrom], #[payload.endDate], #[payload.managerName]);]]></db:parameterized-query>
+        </db:insert>
+        <set-payload value="#[flowVars.'payload data']" doc:name="Set Payload"/>
+        <foreach collection="#[payload]" rootMessageVariableName="payload" doc:name="For Each">
+            <logger message="#[payload.campusMinds.get(counter).campus_mind_mid]" level="INFO" doc:name="Logger"/>
+            <db:insert config-ref="MySQL_Configuration" doc:name="Database">
+                <db:parameterized-query><![CDATA[INSERT INTO campusMinds(CAMPUS_MIND_MID, mindname, AGE, TRACK, ORCHARDID) VALUES (#[payload.campusMinds.get(counter).campus_mind_mid], #[payload.campusMinds.get(counter).name],#[payload.campusMinds.get(counter).age], #[payload.campusMinds.get(counter).track], #[payload.campusMinds.get(counter).orchardid]);]]></db:parameterized-query>
+            </db:insert>
+        </foreach>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+    <flow name="fetchallcampusmindsorchard">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/fetchbothorchardcampusminds" allowedMethods="GET" doc:name="HTTP"/>
+        <logger level="INFO" doc:name="Logger"/>
+        <db:select config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[SELECT * FROM ORCHARD JOIN CAMPUSMINDS ON ORCHARD.batch_Id = CAMPUSMINDS.ORCHARDID;]]></db:parameterized-query>
+        </db:select>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="e63ba6a8-15cc-4ebb-9dd0-9f1a7d7fe7e3">
+            <dw:input-payload doc:sample="sample_data\list_map.dwl"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload groupBy $.batch_Id map {
+	"batchId": $.batch_Id[0],
+	"MONTHFROM": $.MONTHFROM[0],
+	"ENDDATE": $.ENDDATE[0],
+	"MANAGERNAME": $.MANAGERNAME[0],
+	
+	 (payload map ((payload , indexOfCampusMind) -> {
+		Age: payload.AGE,
+		CAMPUS_MIND_MID: payload.CAMPUS_MIND_MID,
+		ORCHARDID: payload.ORCHARDID,
+		TRACK: payload.TRACK,
+		mindname: payload.mindname
+	}))
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    </flow>
+    <flow name="updatecampusmindstatus">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/updatecampusmindstatus" allowedMethods="POST" doc:name="HTTP"/>
+        <dw:transform-message doc:name="Transform Message" metadata:id="02e30573-b59a-4831-a048-927f3a3bba32">
+            <dw:input-payload mimeType="application/json"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	campus_mind_mid: payload.campus_mind_mid as :string,
+	status: payload.status
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="status = #[payload.status] campus_mind_mid = #[payload.campus_mind_mid]" level="INFO" doc:name="Logger"/>
+        <db:update config-ref="MySQL_Configuration" doc:name="Database">
+            <db:parameterized-query><![CDATA[UPDATE CAMPUSMINDS SET status = #[payload.status] WHERE CAMPUS_MIND_MID=#[payload.campus_mind_mid];]]></db:parameterized-query>
+        </db:update>
+        <set-payload value="status updated" doc:name="Set Payload"/>
+    </flow>
+    <choice-exception-strategy name="Choice_Exception_Strategy">
+        <catch-exception-strategy doc:name="Catch Exception Strategy" when="#[exception.causeMatches('com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException')]">
+            <logger message="custom catch exception" level="INFO" doc:name="Logger"/>
+            <set-payload value="Integrity constraint violation exception" doc:name="Set Payload"/>
+            <json:object-to-json-transformer doc:name="Object to JSON"/>
+        </catch-exception-strategy>
+        <catch-exception-strategy when="#[exception.causeMatches('org.mule.api.routing.filter.FilterUnacceptedException')]" doc:name="Catch Exception Strategy">
+            <logger message="filter rejection exception" level="INFO" doc:name="Logger"/>
+            <set-payload value="name not valid rejected by filter" doc:name="Set Payload"/>
+            <json:object-to-json-transformer doc:name="Object to JSON"/>
+        </catch-exception-strategy>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="default exception strategy" level="INFO" doc:name="Logger"/>
+        </catch-exception-strategy>
+
+    </choice-exception-strategy>
+</mule>

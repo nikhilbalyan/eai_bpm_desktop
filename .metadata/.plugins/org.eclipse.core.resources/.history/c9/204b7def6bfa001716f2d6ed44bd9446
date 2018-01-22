@@ -1,0 +1,25 @@
+package one_to_many;
+
+import java.util.List;
+
+public class OrchardPojo {
+	private int batchID;
+	private List<CampusMindsPOJO> campusMinds;
+
+	public int getBatchID() {
+		return batchID;
+	}
+
+	public void setBatchID(int batchID) {
+		this.batchID = batchID;
+	}
+
+	public List<CampusMindsPOJO> getCampusMinds() {
+		return campusMinds;
+	}
+
+	public void setCampusMinds(List<CampusMindsPOJO> campusMinds) {
+		this.campusMinds = campusMinds;
+	}
+
+}

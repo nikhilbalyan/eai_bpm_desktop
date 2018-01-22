@@ -1,0 +1,24 @@
+ {
+ 	"batch_Id": 1,
+ 	"MONTHFROM": "JANUARY",
+ 	"ENDDATE": "JULY",
+ 	"MANAGERNAME": "JOJO",
+ 	"campusminds": [{
+ 		"campus_mind_mid": 1,
+ 		"mindname": "jojo",
+ 		"age": 21,
+ 		"track": "EAI",
+ 		"orchardid": 1
+ 	}, {
+ 		"campus_mind_mid": 2,
+ 		"mindname": "jojo",
+ 		"age": 21,
+ 		"track": "EAI",
+ 		"orchardid": 1
+
+
+ 	}]
+
+
+
+ }

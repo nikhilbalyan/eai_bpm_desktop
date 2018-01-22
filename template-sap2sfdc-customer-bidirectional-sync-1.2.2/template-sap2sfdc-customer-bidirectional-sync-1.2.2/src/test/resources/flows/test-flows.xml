@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:sap="http://www.mulesoft.org/schema/mule/sap" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/sap http://www.mulesoft.org/schema/mule/sap/current/mule-sap.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd">
+    <sub-flow name="createAccountSapFlow" >
+        <logger level="INFO" doc:name="Logger" message="#[payload]"/>
+        <set-variable variableName="customer" value="#[payload[0]]" doc:name="Variable"/>
+        
+		<processor-chain doc:name="Processor Chain">
+			<sap:outbound-endpoint exchange-pattern="request-response"
+				connector-ref="SAP" type="function" functionName="BAPI_CUSTOMER_GETINTNUMBER"
+				xmlVersion="2" outputXml="true" evaluateFunctionResponse="true"
+				responseTimeout="10000" doc:name="Get Next Customer Number from SAP">
+                <sap:definition><![CDATA[<BAPI_CUSTOMER_GETINTNUMBER>
+	<import>
+		<ACCOUNTGROUP>${sap.default.accountGroup}</ACCOUNTGROUP>
+	</import>
+</BAPI_CUSTOMER_GETINTNUMBER>
+]]></sap:definition>
+
+
+			</sap:outbound-endpoint>
+			<dw:transform-message doc:name="Transform BAPI_CUSTOMER_GETINTNUMBER to Customer Number">
+                            <dw:set-payload><![CDATA[%dw 1.0
+%output application/xml
+---
+DEBMAS01:{
+	IDOC @(BEGIN: "1"): {
+		EDI_DC40 @(SEGMENT: "1"): {
+			TABNAM: "EDI_DC40",
+			DIRECT: "2",
+			IDOCTYP: "DEBMAS01",
+			MESTYP: "DEBMAS",
+			SNDPOR: "MULE01_LS",
+			SNDPRT: "LS",
+			SNDPRN: "MULE01_LS",
+			RCVPOR: "T90CLNT090",
+			RCVPRT: "LS",
+			RCVPRN: "T90CLNT090"
+		},
+		E1KNA1M @(SEGMENT: "1"):{
+			//when doing insert set MSGFN to 009
+			MSGFN: "009",
+			KUNNR: payload.BAPI_CUSTOMER_GETINTNUMBER.export.CUSTOMERID,
+			KTOKD: p('sap.default.accountGroup'),
+			LAND1: "SK",
+			NAME1: flowVars.customer.Name,
+			ORT01: flowVars.customer.BillingCity,
+			SPRAS: "E",
+			SPRAS_ISO: "EN"				
+		}
+	}
+}]]></dw:set-payload>
+                        </dw:transform-message>
+
+			<sap:outbound-endpoint exchange-pattern="request-response"
+				connector-ref="SAP" type="idoc" functionName="DEBMAS01" xmlVersion="2"
+				outputXml="true"  responseTimeout="10000"
+				doc:name="Create Customer in SAP" />
+		</processor-chain>
+        <logger message="response from sap #[payload]" level="INFO" doc:name="Logger"/>        
+        
+    </sub-flow>
+    <sub-flow name="retrieveAccountFromSapFlow" >
+                        <sap:outbound-endpoint exchange-pattern="request-response" connector-ref="SAP" type="function" functionName="BAPI_CUSTOMER_FIND" xmlVersion="2" outputXml="true" evaluateFunctionResponse="true" responseTimeout="10000" doc:name="Get Customer by Name">
+            <sap:definition><![CDATA[<BAPI_CUSTOMER_FIND>
+	<import>
+		<MAX_CNT>0</MAX_CNT>
+		<PL_HOLD>X</PL_HOLD>
+	</import>
+  	<tables>
+		<SELOPT_TAB>
+			<row id="0">
+				<TABNAME>KNA1</TABNAME>
+				<FIELDNAME>NAME1</FIELDNAME>
+				<FIELDVALUE>#[org.apache.commons.lang3.StringEscapeUtils.escapeXml(payload['Name'])]</FIELDVALUE>
+			</row>
+		</SELOPT_TAB>
+	</tables>
+</BAPI_CUSTOMER_FIND>
+]]></sap:definition>
+
+
+
+                        </sap:outbound-endpoint>
+
+                       <dw:transform-message doc:name="Transform BAPI_CUSTOMER_FIND to CustomerNumber">
+                            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+CustomerNumber : payload.BAPI_CUSTOMER_FIND.tables.RESULT_TAB.row.CUSTOMER 
+	when (payload.BAPI_CUSTOMER_FIND.tables.RESULT_TAB.row != null) otherwise null]]></dw:set-payload>
+                        </dw:transform-message>
+        <sap:outbound-endpoint exchange-pattern="request-response" connector-ref="SAP" type="function" functionName="ZSDFM_CUSTOMER_GETLIST" xmlVersion="2" outputXml="true" evaluateFunctionResponse="true" responseTimeout="10000" doc:name="Query customer detail from SAP">
+            <sap:definition><![CDATA[<ZSDFM_CUSTOMER_GETLIST>
+  	<import>
+    	<IV_CUST_ID>#[payload['CustomerNumber']]</IV_CUST_ID>
+	</import>
+</ZSDFM_CUSTOMER_GETLIST>
+]]></sap:definition>
+        </sap:outbound-endpoint>
+
+                         <dw:transform-message doc:name="Transform ZSDFM_CUSTOMER_GETLIST to LastModifiedDate">
+                            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	LastModifiedDate : payload.ZSDFM_CUSTOMER_GETLIST.tables.T_KNA1.row.LAST_MODIF_DATE,
+	BillingCity : payload.ZSDFM_CUSTOMER_GETLIST.tables.T_KNA1.row.ORT01,
+	Name : payload.ZSDFM_CUSTOMER_GETLIST.tables.T_KNA1.row.NAME1
+}]]></dw:set-payload>
+                        </dw:transform-message>
+        <logger message="response from sap #[payload]" level="INFO" doc:name="Logger"/>        
+    </sub-flow>
+    <sub-flow name="deleteAccountFromSapFlow" >
+        <logger level="INFO" doc:name="Logger"/>
+    </sub-flow>
+    <sub-flow name="createAccountSalesforceFlow" >
+        <sfdc:create config-ref="Salesforce" type="Account" doc:name="Salesforce">
+            <sfdc:objects ref="#[payload]"/>
+        </sfdc:create>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+    </sub-flow>
+    <sub-flow name="retrieveAccountFromSalesforceFlow" >
+        <sfdc:query-single config-ref="Salesforce" query="SELECT Id, AccountNumber, Description, Fax, Industry, Name,NumberOfEmployees, ParentId, Phone FROM Account WHERE Name = '#[payload[&quot;Name&quot;]]'" doc:name="Salesforce" />
+        <logger level="INFO" doc:name="Logger" message="#[payload]"/>
+    </sub-flow>
+    <sub-flow name="deleteAccountFromSalesforceFlow" >
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        <sfdc:delete config-ref="Salesforce" doc:name="Salesforce">
+            <sfdc:ids ref="#[payload]"/>
+        </sfdc:delete>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+    </sub-flow>
+
+</mule>

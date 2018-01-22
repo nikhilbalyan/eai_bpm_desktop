@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule 
+	xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" 
+	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
+	xmlns:batch="http://www.mulesoft.org/schema/mule/batch" 
+	xmlns:sap="http://www.mulesoft.org/schema/mule/sap"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" 
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/sap http://www.mulesoft.org/schema/mule/sap/current/mule-sap.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+	<batch:job name="fromSalesforceToSapBatch">
+		<batch:threading-profile poolExhaustedAction="WAIT" />
+		<batch:process-records>
+			<batch:step name="foreachProductInSalesforceGetMaterialInSapStep">
+				<enricher target="#[payload.BaseUnitOfMeasureX]" doc:name="Enrich payload with BaseUnitOfMeasureX" source="#[payload.isEmpty() ? 'X' : '']">
+					<processor-chain doc:name="Processor Chain">
+                        <sap:outbound-endpoint exchange-pattern="request-response" connector-ref="SAP" type="function" functionName="ZMMFM_MATERIAL_GETLIST" xmlVersion="2" outputXml="true" responseTimeout="10000" doc:name="Query Material from SAP">
+                            <sap:definition><![CDATA[<ZMMFM_MATERIAL_GETLIST type="function">
+	<import>
+			<IV_MAT_ID>#[payload.ProductCode]</IV_MAT_ID>
+	</import>
+</ZMMFM_MATERIAL_GETLIST>]]></sap:definition>
+
+
+                        </sap:outbound-endpoint>
+                        <dw:transform-message doc:name="ZMMFM_MATERIAL_GETLIST to Material">
+                            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload.ZMMFM_MATERIAL_GETLIST.tables.T_MARA.*row map {
+	Name              : $.MAKTX,
+	LastModifiedDate  : $.LAST_MODIF_DATE,
+	CreatedById       : $.ERNAM,
+	LastModifiedById  : $.AENAM,
+	ProductCode       : $.MATNR
+} when payload.ZMMFM_MATERIAL_GETLIST.tables.T_MARA is :object otherwise []]]></dw:set-payload>
+                        </dw:transform-message>
+
+					</processor-chain>
+				</enricher>
+			</batch:step>
+			<batch:step name="foreachProductInSalesforceUpsertMaterialInSapStep" accept-expression="recordVars.materialInSap == null || (org.mule.templates.util.DateUtils.isAfter(payload.LastModifiedDate, recordVars.materialInSap.LastModifiedDate, -(${timeOffsetBetweenSapAndSalesforce})) )">
+
+
+				<sap:outbound-endpoint exchange-pattern="request-response"
+					connector-ref="SAP" type="function" functionName="BAPI_MATERIAL_SAVEDATA"
+					xmlVersion="2" outputXml="true" evaluateFunctionResponse="true"
+					responseTimeout="10000" doc:name="Upsert Material" >
+                    <sap:definition><![CDATA[<BAPI_MATERIAL_SAVEDATA type="function">
+	<import>
+			<HEADDATA>
+				<MATERIAL>#[payload.ProductCode]</MATERIAL>
+				<MATL_TYPE>${sap.material.type}</MATL_TYPE>
+				<IND_SECTOR>${sap.material.industrySector}</IND_SECTOR>
+				<BASIC_VIEW>X</BASIC_VIEW>
+			</HEADDATA>
+			<CLIENTDATA>
+				<BASE_UOM>${sap.material.baseUnitOfMeasurement}</BASE_UOM>
+			</CLIENTDATA>
+			<CLIENTDATAX>
+				<BASE_UOM>#[payload.BaseUnitOfMeasureX]</BASE_UOM>
+			</CLIENTDATAX>
+	</import>
+	 <tables>
+		 <MATERIALDESCRIPTION type="table">
+		 	<table name="MATERIALDESCRIPTION">
+			   <row id="0">
+				   <LANGU>E</LANGU>
+				    <LANGU_ISO>EN</LANGU_ISO>
+				    <MATL_DESC>#[payload.Name]</MATL_DESC>
+  				</row>
+		  </table>
+		</MATERIALDESCRIPTION>
+	 </tables>		
+</BAPI_MATERIAL_SAVEDATA>
+
+
+]]></sap:definition>
+
+
+                </sap:outbound-endpoint>
+				<logger message="Upsert SAP Response: #[payload]" level="INFO" 
+					doc:name="Log Response" />
+			</batch:step>
+		</batch:process-records>
+        <batch:on-complete>
+            <expression-component doc:name="Release Lock"><![CDATA[app.registry['PollSynchronizer'].unlock();]]></expression-component>
+        </batch:on-complete>
+	</batch:job>
+	<batch:job name="fromSapToSalesforceBatch">
+		<batch:threading-profile poolExhaustedAction="WAIT" />
+		<batch:process-records>
+			<batch:step name="foreachMaterialInSapGetProductInSalesforceStep">
+				<enricher target="#[payload.Id]"
+					doc:name="Enrich payload with product Id" source="#[payload == null ? null : payload.Id]">
+					<sfdc:query-single config-ref="Salesforce"
+						query="SELECT Id, LastModifiedDate, Name, ProductCode FROM Product2 WHERE ProductCode = '#[payload.ProductCode]'"
+						doc:name="Query Product from Salesforce" />
+				</enricher>
+			</batch:step>
+			<batch:step name="foreachMaterialInSapUpsertProductInSalesforceStep" accept-expression="recordVars.productInSalesforce == null || org.mule.templates.util.DateUtils.isAfter(payload.LastModifiedDate, recordVars.productInSalesforce.LastModifiedDate, ${timeOffsetBetweenSapAndSalesforce}) &amp;&amp; ('${sap.jco.user}' != (payload.LastModifiedById == null ? payload.CreatedById : payload.LastModifiedById))">
+
+
+				<batch:commit doc:name="Batch Commit" size="200">
+                    <dw:transform-message doc:name="Prepare Product for Upsert">
+                        <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload map {
+	(Id           : $.Id) when $.Id != null,
+	ProductCode   : $.ProductCode,
+	Name          : $.Name
+}
+
+]]></dw:set-payload>
+                    </dw:transform-message>
+					<sfdc:upsert config-ref="Salesforce"
+						externalIdFieldName="Id" type="Product2" doc:name="Salesforce">
+						<sfdc:objects ref="#[payload]" />
+					</sfdc:upsert>
+					<logger message="Upsert Salesforce Response: #[payload]"
+						level="INFO" doc:name="Log Response" />
+				</batch:commit>
+			</batch:step>
+		</batch:process-records>
+        <batch:on-complete>
+            <expression-component doc:name="Release Lock"><![CDATA[app.registry['PollSynchronizer'].unlock();]]></expression-component>
+        </batch:on-complete>
+	</batch:job>
+</mule>

@@ -49,15 +49,5 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
         </catch-exception-strategy>
     </flow>
     <!-- Flow that shows how to create an application/x-www-form-urlencoded request. It will hit the login flow with the right credentials -->
-    <flow name="CallLoginFlowUsingRequester">
-    	<!-- Listen every HTTP method requests on uri /requesterLogin  -->
-        <http:listener config-ref="HttpListenerConfig" doc:name="Login using HTTP request component" path="/requesterLogin"/>
-        <!-- Sets the payload to a Map. http:request will automatically set the Content-Type to application/x-www-form-urlencoded
-        	when the payload is a map and create the body with the map data. -->
-        <expression-component doc:name="Create map with form data"><![CDATA[payload = new HashMap();
-payload['username'] = 'mule';
-payload['password'] = 'mule';]]></expression-component>
-		<!-- Calls the login listener. The response get by this call will be send back to the client by the http:listener of this flow -->
-        <http:request config-ref="HttpRequestConfig" doc:name="DoLogin" method="POST" path="/login"/>
-    </flow>
+
 </mule>

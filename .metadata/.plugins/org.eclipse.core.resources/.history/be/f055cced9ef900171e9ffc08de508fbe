@@ -1,0 +1,6 @@
+#** GENERATED CONTENT ** Mule Application Deployment Descriptor
+#Mon Jan 15 08:19:46 IST 2018
+redeployment.enabled=true
+encoding=UTF-8
+domain=default
+config.resources=campusminds.xml

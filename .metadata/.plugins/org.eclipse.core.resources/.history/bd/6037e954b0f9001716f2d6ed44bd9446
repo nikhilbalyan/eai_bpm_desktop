@@ -1,0 +1,12 @@
+package orchard;
+
+import java.io.Serializable;
+
+public class Orchard implements Serializable {
+	
+	private int campus_mind_mid;
+	private String name;
+	private int age;
+	private String track;
+	private int orchardid;
+}

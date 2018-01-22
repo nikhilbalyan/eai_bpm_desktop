@@ -1,0 +1,14 @@
+%dw 1.0
+%output application/java
+---
+[{
+	AGE: 1,
+	CAMPUS_MIND_MID: 1,
+	ENDDATE: "????",
+	MANAGERNAME: "????",
+	MONTHFROM: "????",
+	ORCHARDID: 1,
+	TRACK: "????",
+	batch_Id: 1,
+	mindname: "????"
+}]
