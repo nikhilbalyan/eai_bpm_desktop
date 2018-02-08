@@ -1,0 +1,16 @@
+package votingeligibility;
+
+public class ValidateAge {
+	int age;
+	ValidateAge(int age) {
+		this.age = age;
+	}
+	
+	public void validate() {
+		if(age < 18) {
+			System.out.println("valid");
+		} else {
+			System.out.println("not valid ");
+		}
+	}
+}

@@ -1,0 +1,14 @@
+package votingeligibility;
+
+import org.mule.api.MuleEvent;
+import org.mule.api.exception.MessagingExceptionHandler;
+
+public class TestException implements MessagingExceptionHandler {
+
+	@Override
+	public MuleEvent handleException(Exception exception, MuleEvent event) {
+		System.out.println("handleException exception " + exception);
+		return event;
+	}
+
+}

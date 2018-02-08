@@ -1,6 +1,0 @@
-#** GENERATED CONTENT ** Mule Application Deployment Descriptor
-#Fri Jan 19 11:37:31 IST 2018
-redeployment.enabled=true
-encoding=UTF-8
-config.resources=dataweave-6thweek.xml,dataweave_raml_implementation.xml
-domain=default

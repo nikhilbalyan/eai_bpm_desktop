@@ -1,5 +1,0 @@
-#Fri Jan 19 11:06:21 IST 2018
-encoding=UTF-8
-domain=default
-redeployment.enabled=true
-config.resources=dataweave-6thweek.xml,dataweave_raml.xml

@@ -1,6 +1,0 @@
-package one_to_many;
-
-public class OrchardPojo {
-	int batchID;
-	
-}

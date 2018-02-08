@@ -1,0 +1,23 @@
+package votingeligibility;
+
+import org.mule.api.MuleEvent;
+
+public class TestClass implements MessagingExceptionHandler {
+	
+	String enableNotifications;
+	
+	public String getEnableNotifications() {
+		return enableNotifications;
+	}
+	
+	public void setEnableNotifications(String enableNotifications) {
+		this.enableNotifications = enableNotifications;
+	}
+
+	@Override
+	public MuleEvent handleException(Exception exception, MuleEvent event) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

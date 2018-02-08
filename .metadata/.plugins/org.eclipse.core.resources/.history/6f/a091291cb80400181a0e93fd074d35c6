@@ -1,0 +1,5 @@
+package votingeligibility;
+
+public class TestClass implements MessagingExceptionHandler {
+
+}

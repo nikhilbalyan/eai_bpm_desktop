@@ -1,0 +1,8 @@
+package votingeligibility;
+
+public class ValidateAge {
+	int age;
+	ValidateAge(int age) {
+		this.age = age;
+	}
+}

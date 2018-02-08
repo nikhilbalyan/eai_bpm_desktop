@@ -1,0 +1,8 @@
+package accessingjavaclass;
+
+
+public class Welcome {
+	public void helloWorld() {
+		System.out.println("hello world");
+	}
+}

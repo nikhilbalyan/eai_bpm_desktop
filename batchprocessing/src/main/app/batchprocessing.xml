@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+    <batch:job name="batchprocessingBatch">
+        <batch:input>
+            <file:inbound-endpoint path="src/main/resources/input" moveToDirectory="src/main/resources/output" responseTimeout="10000" doc:name="File"/>
+            <dw:transform-message doc:name="Transform Message" metadata:id="4e5e157f-1afb-48e6-9882-85c478f4dbad">
+                <dw:input-payload doc:sample="sample_data\list_csv.csv" mimeType="application/csv"/>
+                <dw:set-payload><![CDATA[%dw 1.0
+%output application/csv
+---
+payload]]></dw:set-payload>
+            </dw:transform-message>
+            <set-variable variableName="size" value="#[payload.size()]" doc:name="set size flow var"/>
+        </batch:input>
+        <batch:process-records>
+            <batch:step name="Batch_Step">
+                <set-variable variableName="fname" value="#[payload]" doc:name="set fname"/>
+                <batch:set-record-variable variableName="recordVar" value="#[payload.CSV]" doc:name="Record Variable"/>
+            </batch:step>
+        </batch:process-records>
+        <batch:on-complete>
+            <logger message="#" level="INFO" doc:name="Logger"/>
+        </batch:on-complete>
+    </batch:job>
+</mule>

@@ -166,11 +166,11 @@ payload groupBy $.batch_Id map {
 	]
 		
 	++ (payload map ((payload , indexOfCampusMind) -> {
-		Age: payload.AGE when payload.ORCHARDID == $.batch_Id[0] otherwise {},
-		CAMPUS_MIND_MID: payload.CAMPUS_MIND_MID when payload.ORCHARDID == $.batch_Id[0] otherwise {},
-		ORCHARDID: payload.ORCHARDID when payload.ORCHARDID == $.batch_Id[0] otherwise {},
-		TRACK: payload.TRACK when payload.ORCHARDID == $.batch_Id[0] otherwise {},
-		mindname: payload.mindname when payload.ORCHARDID == $.batch_Id[0] otherwise {}
+		Age: payload.AGE :string format{ format: "###.00"} when payload.ORCHARDID == $.batch_Id[0] otherwise "",
+		CAMPUS_MIND_MID: payload.CAMPUS_MIND_MID when payload.ORCHARDID == $.batch_Id[0] otherwise "",
+		ORCHARDID: payload.ORCHARDID when payload.ORCHARDID == $.batch_Id[0] otherwise "",
+		TRACK: payload.TRACK when payload.ORCHARDID == $.batch_Id[0] otherwise "",
+		mindname: payload.mindname when payload.ORCHARDID == $.batch_Id[0] otherwise ""
 	}))
 }]]></dw:set-payload>
         </dw:transform-message>

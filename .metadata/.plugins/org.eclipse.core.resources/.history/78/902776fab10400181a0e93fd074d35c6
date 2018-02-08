@@ -1,0 +1,7 @@
+package votingeligibility;
+
+public class AgeNotValid extends Exception{
+	AgeNotValid(String str) {
+		super()
+	}
+}

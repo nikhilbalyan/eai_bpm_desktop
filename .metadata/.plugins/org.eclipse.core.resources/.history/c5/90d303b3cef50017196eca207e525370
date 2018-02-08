@@ -1,6 +1,0 @@
-#** GENERATED CONTENT ** Mule Application Deployment Descriptor
-#Wed Jan 10 11:52:56 IST 2018
-redeployment.enabled=true
-encoding=UTF-8
-config.resources=
-domain=default

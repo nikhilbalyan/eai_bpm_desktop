@@ -1,7 +1,0 @@
-package one_to_many;
-
-public class CampusMinds {
-	private String name;
-	private String track;
-	 
-}

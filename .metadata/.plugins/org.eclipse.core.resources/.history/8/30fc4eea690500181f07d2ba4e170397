@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+    <file:connector name="File" writeToDirectory="C:\Users\EAI\AnypointStudio\workspace\connectingfiles\src\main\resources\input" readFromDirectory="C:\Users\EAI\AnypointStudio\workspace\connectingfiles\src\main\resources\output" workDirectory="C:\Users\EAI\AnypointStudio\workspace\connectingfiles" autoDelete="true" streaming="true" validateConnections="true" doc:name="File"/>
+    <flow name="connectingfilesFlow">
+        <file:inbound-endpoint path="src/test/resources/input" moveToDirectory="src/test/resources/outputsd" responseTimeout="10000" doc:name="File"/>
+        <logger message="flow bypassed file connector" level="INFO" doc:name="Logger"/>
+    </flow>
+</mule>

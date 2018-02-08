@@ -1,8 +1,0 @@
-package one_to_many;
-
-public class OrchardCampusMindsPOJO {
-	private int batch_Id;
-	private String monthFrom;
-	private String endDate;
-	private String managerName;
-}

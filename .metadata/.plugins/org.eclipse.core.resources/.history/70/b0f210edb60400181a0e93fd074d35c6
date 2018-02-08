@@ -1,0 +1,7 @@
+package votingeligibility;
+
+import org.mule.api.exception.MessagingExceptionHandler;
+
+public class TestException implements MessagingExceptionHandler{
+
+}

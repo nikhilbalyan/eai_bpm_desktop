@@ -1,8 +1,0 @@
-package orchard;
-
-import java.io.Serializable;
-
-public class Orchard implements Serializable {
-	int batchId;
-	
-}

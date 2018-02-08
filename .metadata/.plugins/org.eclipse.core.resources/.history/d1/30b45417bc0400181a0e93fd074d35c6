@@ -1,0 +1,10 @@
+package votingeligibility;
+
+public class NotValid extends AgeNotValid {
+
+	NotValid(String str) {
+		super(str);
+		// TODO Auto-generated constructor stub
+	}
+
+}
